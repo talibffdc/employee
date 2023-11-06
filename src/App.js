@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React, { useState } from "react";
+import employees from "./data";
+import EmployeeList from "./EmployeeList";
 
 function App() {
+  const [employeeData, setEmployeeData] = useState(employees);
+
+  const handleDelete = (id) => {
+    setEmployeeData(employeeData.filter((employee) => employee.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-5">
+      <h1>Employee Management System</h1>
+      <button className="btn btn-primary mb-3">Add Employee</button>
+      <EmployeeList employees={employeeData} onDelete={handleDelete} />
     </div>
   );
 }
