@@ -3,17 +3,35 @@
 const employees = [
     {
       id: 1,
-      name: "John Doe",
+      name: "Talib",
       position: "Software Engineer",
-      salary: 80000,
+      salary: 8000,
     },
     {
       id: 2,
-      name: "Jane Smith",
+      name: "Aamir",
       position: "Product Manager",
-      salary: 90000,
+      salary: 9000,
     },
-    // Add more employees as needed
+    {
+      id: 3,
+      name: "Nayan",
+      position: "Software Engineer",
+      salary: 3000,
+    },
+    {
+      id: 4,
+      name: "Sanya",
+      position: "Software Engineer",
+      salary: 5000,
+    },
+    {
+      id: 5,
+      name: "Rishabh",
+      position: "Software Engineer",
+      salary: 6000,
+    },
+    
   ];
   
   export default employees;
