@@ -54,6 +54,13 @@ function App() {
     setShowAddForm(false);
   };
 
+  const handleUpdate = (updatedEmployee) => {
+    const updatedData = employeeData.map((employee) =>
+      employee.id === updatedEmployee.id ? updatedEmployee : employee
+    );
+    setEmployeeData(updatedData);
+  };
+
   return (
     <div className="container mt-5">
       <h1>Employee Management System</h1>
@@ -91,13 +98,13 @@ function App() {
                 onChange={(e) => setNewEmployee({ ...newEmployee, salary: parseFloat(e.target.value) })}
               />
             </div>
-            <button className="btn btn-success" onClick={handleSave}>
+            <button className="btn btn-success" onClick={handleSave} >
               Save
             </button>
           </div>
         </div>
       )}
-      <EmployeeList employees={employeeData} onDelete={handleDelete} />
+      <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate}  />
     </div>
   );
 }
