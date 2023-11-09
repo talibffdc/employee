@@ -14,7 +14,7 @@
 //     <div className="container mt-5">
 //       <h1>Employee Management System</h1>
 //       <button className="btn btn-primary mb-3">Add Employee</button>
-//       <EmployeeList employees={employeeData} onDelete={handleDelete} />
+//       <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate}  />
 //     </div>
 //   );
 // }
@@ -62,50 +62,44 @@ function App() {
   };
 
   return (
-    <div className="container mt-5">
-      <h1>Employee Management System</h1>
-      <button className="btn btn-primary mb-3" onClick={handleAdd}>
-        Add Employee
-      </button>
-      {showAddForm && (
-        <div className="card mb-3">
-          <div className="card-body">
-            <h5 className="card-title">Add New Employee</h5>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Name"
-                value={newEmployee.name}
-                onChange={(e) => setNewEmployee({ ...newEmployee, name: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Position"
-                value={newEmployee.position}
-                onChange={(e) => setNewEmployee({ ...newEmployee, position: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Salary"
-                value={newEmployee.salary}
-                onChange={(e) => setNewEmployee({ ...newEmployee, salary: parseFloat(e.target.value) })}
-              />
-            </div>
-            <button className="btn btn-success" onClick={handleSave} >
-              Save
-            </button>
-          </div>
-        </div>
-      )}
+    <>
+      <div className="container mt-5">
+        <h1>Employee Management System</h1>
+        <button className="btn btn-primary mb-3" onClick={handleAdd}  data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add New Employee
+        </button>
+
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+          
+        
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+
+        <input className="form-control my-2" placeholder=" Name" type="text" value={newEmployee.name} onChange={(e) => setNewEmployee({ ...newEmployee, name: e.target.value })} />
+        <input className="form-control my-2" placeholder=" Position" type="text" value={newEmployee.position}
+                  onChange={(e) => setNewEmployee({ ...newEmployee, position: e.target.value })}/>
+        <input className="form-control my-2" placeholder=" Salary" type="text" value={newEmployee.salary} onChange={(e) => setNewEmployee({ ...newEmployee, salary: parseFloat(e.target.value) })}/>
+                  
+
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button className="btn btn-success" data-bs-dismiss="modal" onClick={handleSave} >
+                Save
+              </button>
+      </div>
+    </div>
+  </div>
+</div>
+
       <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate}  />
     </div>
+    </>
   );
 }
 
