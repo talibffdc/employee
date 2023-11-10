@@ -1,5 +1,6 @@
 
 import React from "react";
+import employees from './data';
 
 function Employee({ employee, onDelete }) {
   function onUpdate(id){
@@ -10,19 +11,24 @@ function Employee({ employee, onDelete }) {
   
   return (
     <>
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">{employee.name}</h5>
-        <p className="card-text">Position: {employee.position}</p>
-        <p className="card-text">Salary: {employee.salary}</p>
-        <button
-          className="btn btn-danger"
-          onClick={() => onDelete(employee.id)}
-        >
-          Delete
-        </button>
 
-        <button
+<table className="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {employees.map((employee) => (
+          <tr key={employee.id}>
+            <td>{employee.name}</td>
+            <td>{employee.position}</td>
+            <td>{employee.salary}</td>
+            <td>
+            <button
           className="btn btn-danger mx-2"
           onClick={() => onUpdate(employee.id)
           }
@@ -30,26 +36,29 @@ function Employee({ employee, onDelete }) {
         
           Update
         </button>
+              <button
+          className="btn btn-danger"
+          onClick={() => onDelete(employee.id)}
+        >
+          Delete
+        </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
 
-
-
-      </div>
-      
-    </div>
-
-
-
-<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
           
         
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div className="modal-body">
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div className="modal-body">
 
         <input className="form-control my-2" placeholder="Change Name" type="text"/>
         <input className="form-control my-2" placeholder="Change Position" type="text"/>
