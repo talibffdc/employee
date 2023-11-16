@@ -1,13 +1,16 @@
 
 import React from "react";
-import employees from './data';
 
-function Employee({ employee, onDelete }) {
+function Employee({ employees, onDelete }) {
   function onUpdate(id){
 
     
     
   }
+
+  const handleDelete = (id) => {
+    onDelete(id);
+  };
   
   return (
     <>
@@ -38,10 +41,10 @@ function Employee({ employee, onDelete }) {
         </button>
               <button
           className="btn btn-danger"
-          onClick={() => onDelete(employee.id)}
-        >
+          onClick={() => handleDelete(employee.id)}>
           Delete
         </button>
+
             </td>
           </tr>
         ))}

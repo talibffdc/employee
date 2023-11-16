@@ -16,6 +16,9 @@ function App() {
     setEmployeeData(employeeData.filter((employee) => employee.id !== id));
   };
 
+ 
+
+
   const handleAdd = () => {
     setShowAddForm(true);
   };
@@ -75,7 +78,8 @@ function App() {
 
 
 
-      <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate}  />
+      {/* <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate}  /> */}
+      <EmployeeList employees={employeeData} onDelete={handleDelete} onUpdate={handleUpdate} />
     </div>
     </>
   );
